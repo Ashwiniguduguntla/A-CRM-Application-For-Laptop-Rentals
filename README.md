@@ -8,7 +8,7 @@ Setup → Roles → Expand All → Add Role under CEO → Label = Owner.
 
 Create Role: Agent
 
-# Add 2 roles under Owner → Label = Agent.
+Add 2 roles under Owner → Label = Agent.
 
 Create Users
 
