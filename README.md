@@ -59,9 +59,13 @@ Save & Activate: Flow Name = Laptop Distributions.
 # Trigger:
 
 trigger LaptopBooking on Laptop_Bookings__c (after insert, after update) {
+
     if(Trigger.isAfter && (Trigger.isInsert || Trigger.isUpdate)) {
+    
         LaptopBookingHandler.sendEmailNotification(Trigger.new);
+        
     }
+    
 }
 
 
