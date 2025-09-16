@@ -68,20 +68,36 @@ trigger LaptopBooking on Laptop_Bookings__c (after insert, after update) {
 # Handler Class:
 
 public class LaptopBookingHandler {
+
     public static void sendEmailNotification(List<Laptop_Bookings__c> lapList) {
+    
         for(Laptop_Bookings__c lap : lapList) {
+        
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+            
             email.setToAddresses(new List<String>{lap.Email__c});
+            
             email.setSubject('Welcome to Laptop Rentals');
+            
             String body = 'Dear Customer,\n' +
+            
                           'Thank you for booking with us.\n' +
+                          
                           'Laptop: ' + lap.Laptop_name__c +
+                          
                           '\nCore: ' + lap.Core_type__c +
+                          
                           '\nAmount: ' + lap.Amount__c;
+                          
             email.setPlainTextBody(body);
+
+            
             Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{email});
+            
         }
+        
     }
+    
 }
 
 # 5. Create Reports
